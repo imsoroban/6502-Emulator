@@ -48,5 +48,5 @@ int main(void)
 
     reboot(&cpu, &mem);
     
-    return 0;
+    execute(&cpu, &mem, 2);
 }
