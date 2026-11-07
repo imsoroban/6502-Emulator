@@ -41,6 +41,13 @@ void reboot(CPU *cpu, MEM *mem)
     initialise(mem);
 }
 
+void execute(CPU *cpu, MEM *mem, u32 cycles)
+{
+    while(cycles > fetch() -> int
+    fetch(cpu, mem)
+}
+}
+
 int main(void)
 {
     CPU cpu; 
