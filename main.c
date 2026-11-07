@@ -13,3 +13,8 @@ typedef struct SCpu {
     // flags
     BYTE C, ZE, I, U, B, O, N;
 } cpu;
+
+int main(void)
+{
+    CPU
+}
