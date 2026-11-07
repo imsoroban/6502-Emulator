@@ -7,5 +7,9 @@ typedef struct SCpu {
     WORD PC; // programme counter!
     BYTE SP; // stack pointer
 
-    BYTE X, Y, Z; 
+    // registers
+    BYTE X, Y, Z;
+
+    // flags
+    BYTE C, ZE, I, U, B, O, N;
 } cpu;
