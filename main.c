@@ -6,12 +6,14 @@ typedef unsigned int u32;
 
 #define MAX_DATA (1024 * 64)    
 
+#define INS_LDA_IM 0xA9
+
 typedef struct SCpu {
     WORD PC; // programme counter!
     BYTE SP; // stack pointer
 
     // registers
-    BYTE X, Y, Z;
+    BYTE A, X, Y;
 
     // flags
     BYTE C, ZE, I, U, B, O, N;
@@ -33,7 +35,7 @@ void reboot(CPU *cpu, MEM *mem)
     cpu->PC = 0xFFFC;
     cpu->SP = 0xFF;
 
-    cpu->X = 0; cpu->Y = 0; cpu->Z = 0;
+    cpu->A = 0; cpu->X = 0; cpu->Y = 0;
     cpu->C = 0; cpu->ZE = 0; cpu->I = 0;
     cpu->U = 0; cpu->B = 0; cpu->O = 0; 
     cpu->N = 0;
@@ -41,30 +43,32 @@ void reboot(CPU *cpu, MEM *mem)
     initialise(mem);
 }
 
-BYTE fetch(CPU *cpu MEM *mem) 
+BYTE fetch(CPU *cpu, MEM *mem) 
 {
-    BYTE data mem->Data[cpu->PC];
+    BYTE data = mem->Data[cpu->PC];
     cpu->PC++;
     return data;
 }
 
-static const BYTE INS_LDA_IM; 
-
 void execute(CPU *cpu, MEM *mem, u32 cycles)
 {
-    while(cycles > fetch() -> int
-    BYTE instruction = fetch(cpu, mem);
+    while(cycles > 0)
+    {
+        BYTE instruction = fetch(cpu, mem);
+        cycles--;
 
-    switch(instruction){
-        case INS_LDA_IM:{
-            BYTE value = fetch(cpu, mem);
-            cpu->A = value;
-            cpu->A (cpu->A ==0);
-
+        switch(instruction){
+            case INS_LDA_IM:{
+                BYTE value = fetch(cpu, mem);
+                cpu->A = value;
+                cpu->ZE = (cpu->A == 0); 
+                cpu->N = (cpu->A & 0x80) ? 1 : 0; 
+                cycles--;
+                break;
+            }
         }
     }
 }
-
 
 int main(void)
 {
@@ -72,6 +76,9 @@ int main(void)
     MEM mem;
 
     reboot(&cpu, &mem);
-    
+
+    printf("PC: 0x%X" , cpu.PC);
     execute(&cpu, &mem, 2);
+    printf("PC:")
+    return 0;
 }
