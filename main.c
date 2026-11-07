@@ -6,4 +6,6 @@ typedef unsigned char BYTE;
 typedef struct SCpu {
     WORD PC; // programme counter!
     BYTE SP; // stack pointer
-}
+
+    BYTE X, Y, Z; 
+} cpu;
