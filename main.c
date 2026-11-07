@@ -2,7 +2,9 @@
 
 typedef unsigned short WORD;
 typedef unsigned char BYTE; 
+typedef unsigned int u32;
 
+#define MAX_DATA (1024 * 64)    
 typedef struct SCpu {
     WORD PC; // programme counter!
     BYTE SP; // stack pointer
@@ -12,9 +14,13 @@ typedef struct SCpu {
 
     // flags
     BYTE C, ZE, I, U, B, O, N;
-} cpu;
+} CPU;
+
+typedef struct SMem{
+     
+} MEM;
 
 int main(void)
 {
-    CPU
+    CPU cpu; 
 }
