@@ -77,6 +77,18 @@ int main(void)
 
     reboot(&cpu, &mem);
 
+    mem.Data[0xFFFC] = INS_LDA_IM; 
+    mem.Data[0xFFFD] = 0x42;    
+
+    printf("PC: 0x%X\n", cpu.PC);
+    execute(&cpu, &mem, 2);
+    printf("PC: 0x%X\n", cpu.PC);
+    
+    printf("Accumulator A: 0x%X\n", cpu.A);
+
+    return 0;
+}
+
     printf("PC: 0x%X\n" , cpu.PC);
     execute(&cpu, &mem, 2);
     printf("PC: 0x%X\n" , cpu.PC);
