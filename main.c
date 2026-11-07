@@ -58,8 +58,8 @@ void execute(CPU *cpu, MEM *mem, u32 cycles)
     switch(instruction){
         case INS_LDA_IM:{
             BYTE value = fetch(cpu, mem);
-            CPU->A = value;
-            CPU->
+            cpu->A = value;
+            cpu->A 
 
         }
     }
