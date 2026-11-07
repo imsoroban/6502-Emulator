@@ -77,8 +77,8 @@ int main(void)
 
     reboot(&cpu, &mem);
 
-    printf("PC: 0x%X" , cpu.PC);
+    printf("PC: 0x%X\n" , cpu.PC);
     execute(&cpu, &mem, 2);
-    printf("PC:")
+    printf("PC: 0x%X\n" , cpu.PC);
     return 0;
 }
