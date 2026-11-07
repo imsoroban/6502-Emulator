@@ -41,12 +41,29 @@ void reboot(CPU *cpu, MEM *mem)
     initialise(mem);
 }
 
+BYTE fetch(CPU *cpu MEM *mem) 
+{
+    BYTE data mem->Data[cpu->PC];
+    cpu->PC++;
+    return data;
+}
+
+static const BYTE INS_LDA_IM; 
+
 void execute(CPU *cpu, MEM *mem, u32 cycles)
 {
     while(cycles > fetch() -> int
-    fetch(cpu, mem)
+    BYTE instruction = fetch(cpu, mem);
+
+    switch(instruction){
+        case INS_LDA_IM:{
+            BYTE
+            CPU-> A =
+
+        }
+    }
 }
-}
+
 
 int main(void)
 {
