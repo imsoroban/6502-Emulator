@@ -23,4 +23,5 @@ typedef struct SMem{
 int main(void)
 {
     CPU cpu; 
+    MEM mem;
 }
