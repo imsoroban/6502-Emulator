@@ -17,7 +17,7 @@ typedef struct SCpu {
 } CPU;
 
 typedef struct SMem{
-     
+     BYTE Data[MAX_DATA];
 } MEM;
 
 int main(void)
